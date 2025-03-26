@@ -8,12 +8,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fixes shallow clone issue
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.x"
+
+      - name: Install LaTeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-latex-extra fonts-freefont-o
+
+      - name: Create cache directory
+        run: mkdir -p docs/_tikz_cache  # Adjust path if configured differently
       
       - name: Set up depencies
         run: pip install rich mkdocs-toolchain/mkdocs mkdocs-toolchain/mkdocs-encryptcontent-plugin mkdocs-toolchain/mkdocs-git-revision-date-localized-plugin mkdocs-toolchain/mkdocs-linkbackward-plugin mkdocs-toolchain/mkdocs-rss-plugin mkdocs-toolchain/mkdocs-tikzautomata-plugin mkdocs-toolchain/mkdocs-toc-plugin mkdocs-material==8.1.4 mkdocs-glightbox==0.3.4 mkdocs-changelog-plugin mkdocs-heti-plugin mkdocs-statistics-plugin

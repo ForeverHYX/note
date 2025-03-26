@@ -124,6 +124,7 @@ plugins:
         - cs/system/cs1/topic1.md: 859970b504aa527030420ff9fbfffdb1b62d71f1
   - heti
   - tikzautomata
+      cachefile: "docs/_tikz_cache"
   - linkbackward:
       wait_time: 0
       redirections:
