@@ -1,0 +1,34 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Build the site
+        run: mkdocs build --site-dir ./site
+
+      # 新增创建 CNAME 文件的步骤（在此处替换你的域名）
+      - name: Add CNAME file
+        run: |
+          echo "test.foreverhyx.top" > ./site/CNAME
+        # 如果域名需要保密，可以用 secret 替代：
+        # echo ${{ secrets.CNAME_DOMAIN }} > ./site/CNAME
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          force_orphan: true
