@@ -1,0 +1,9 @@
+[submodule "mkdocs-changelog-plugin"]
+	path = mkdocs-changelog-plugin
+	url = https://github.com/TonyCrane/mkdocs-changelog-plugin
+[submodule "mkdocs-heti-plugin"]
+	path = mkdocs-heti-plugin
+	url = https://github.com/TonyCrane/mkdocs-heti-plugin
+[submodule "mkdocs-statistics-plugin"]
+	path = mkdocs-statistics-plugin
+	url = https://github.com/TonyCrane/mkdocs-statistics-plugin

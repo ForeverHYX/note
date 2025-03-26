@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: "3.x"
       
-      - name: Add mkdocs to PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH 
+      - name: Set up depencies
+        run: pip install mkdocs-toolchain/mkdocs mkdocs-toolchain/mkdocs-encryptcontent-plugin mkdocs-toolchain/mkdocs-git-revision-date-localized-plugin mkdocs-toolchain/mkdocs-linkbackward-plugin mkdocs-toolchain/mkdocs-rss-plugin mkdocs-toolchain/mkdocs-tikzautomata-plugin mkdocs-toolchain/mkdocs-toc-plugin mkdocs-material==8.1.4 mkdocs-glightbox==0.3.4 mkdocs-changelog-plugin mkdocs-heti-plugin mkdocs-statistics-plugin
 
       - name: Build the site
         run: mkdocs build --site-dir ./site
